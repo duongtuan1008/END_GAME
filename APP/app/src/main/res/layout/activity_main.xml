@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/gradient_background"
+    tools:context=".MainActivity">
+
+    <!-- Profile, Search, and Menu -->
+    <LinearLayout
+        android:id="@+id/profileContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <ImageView
+            android:id="@+id/imgProfile"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerCrop"
+            android:background="@drawable/circle_bg"
+            android:padding="8dp"
+            android:contentDescription="@string/profile_icon"/>
+
+        <TextView
+            android:id="@+id/tvWelcome"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:text="@string/welcome_text"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"/>
+
+
+        <ImageView
+            android:id="@+id/imgMenu"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@drawable/ic_menu"
+            android:contentDescription="@string/menu_icon"
+            android:padding="8dp"/>
+    </LinearLayout>
+
+    <!-- Room Selector -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/roomSelector"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:singleSelection="true"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toBottomOf="@id/profileContainer"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnLivingRoom"
+            style="@style/RoundedButton"
+            android:text="@string/living_room"
+            app:cornerRadius="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnKitchen"
+            style="@style/RoundedButton"
+            android:text="@string/kitchen"
+            app:cornerRadius="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnBedroom"
+            style="@style/RoundedButton"
+            android:text="@string/bedroom"
+            app:cornerRadius="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/userList"
+            style="@style/RoundedButton"
+            android:text="Users"
+            app:cornerRadius="24dp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <!-- Scene Modes -->
+    <LinearLayout
+        android:id="@+id/scenesLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:paddingVertical="16dp"
+        android:baselineAligned="false"
+        app:layout_constraintTop_toBottomOf="@id/roomSelector"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btnAwakening"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_temper"
+                android:background="@drawable/circle_bg"
+                android:padding="12dp"
+                android:contentDescription="@string/awakening_icon"/>
+
+            <TextView
+                android:id="@+id/txtTemperature"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <!-- Night (Hiển thị độ ẩm) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btnNight"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_humi"
+                android:background="@drawable/circle_bg"
+                android:padding="12dp"
+                android:contentDescription="@string/night_icon"/>
+
+            <TextView
+                android:id="@+id/txtHumidity"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:gravity="center"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btnCalm"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_fire"
+                android:background="@drawable/circle_bg"
+                android:padding="12dp"
+                />
+            <TextView
+                android:text="@string/calm"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center">
+
+            <ImageView
+                android:id="@+id/btnEnergetic"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_air_conditioner"
+                android:background="@drawable/circle_bg"
+                android:padding="12dp"
+                />
+            <TextView
+                android:text="@string/energetic"
+                android:textSize="12sp"
+                android:textColor="@android:color/black"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"/>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Device List -->
+    <!-- Danh sách thiết bị thông minh -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerDevices"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:padding="16dp"
+        app:layout_constraintTop_toBottomOf="@id/scenesLayout"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"/>
+</androidx.constraintlayout.widget.ConstraintLayout>

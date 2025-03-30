@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <style name="Theme.SmartHome" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">#FFBB86FC</item>
+        <item name="colorPrimaryVariant">#FF6200EE</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+
+    </style>
+    <style name="RoundedButton" parent="Widget.MaterialComponents.Button.TextButton">
+        <item name="backgroundTint">@color/button_background</item>
+        <item name="shapeAppearanceOverlay">@style/RoundedCorner</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:elevation">8dp</item>
+    </style>
+
+    <style name="RoundedCorner">
+        <item name="cornerSize">20dp</item>
+    </style>
+</resources>

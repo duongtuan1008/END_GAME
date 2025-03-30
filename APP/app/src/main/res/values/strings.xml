@@ -1,0 +1,17 @@
+<resources>
+    <string name="app_name">Smart Home</string>
+    <string name="welcome_text">Welcome, User!</string>
+    <string name="living_room">Living Room</string>
+    <string name="kitchen">Kitchen</string>
+    <string name="bedroom">Bedroom</string>
+    <string name="awakening">Awakening</string>
+    <string name="night">Night</string>
+    <string name="calm">Calm</string>
+    <string name="energetic">Energetic</string>
+    <string name="menu_icon">Menu icon</string>
+    <string name="profile_icon">User profile picture</string>
+    <string name="awakening_icon">Awakening Icon</string>
+    <string name="night_icon">Night Icon</string>
+    <string name="todo">TODO</string>
+
+</resources>

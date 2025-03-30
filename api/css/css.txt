@@ -1,0 +1,513 @@
+/* Cài đặt chung */
+body {
+  font-family: Roboto, Arial, sans-serif;
+  background: linear-gradient(
+    135deg,
+    rgba(214, 213, 218, 1),
+    rgba(212, 215, 220, 1),
+    rgba(22, 42, 51, 1),
+    rgba(21, 41, 52, 1),
+    rgba(214, 212, 215, 1)
+  );
+  background-attachment: fixed;
+  background-size: cover;
+  color: white;
+  margin: 0;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+}
+.boxpanel {
+  padding: 10px;
+  border-radius: 30px;
+  color: rgba(0, 0, 0, 1);
+  background: rgba(255, 255, 255, 0.1); /* Màu nền mặc định */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0); /* Viền trắng mờ */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2); /* Tạo hiệu ứng bóng */
+}
+.time {
+  width: 40%;
+  font-size: 25px;
+  display: flex;
+  justify-content: center; /* Căn giữa theo chiều ngang */
+  align-items: center; /* Căn giữa theo chiều dọc */
+  font-weight: bold;
+  text-align: center;
+}
+.weather-box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%; /* Kích thước giống trong ảnh */
+  height: 50px;
+  text-align: center;
+  color: rgb(0, 0, 0);
+  line-height: 0.8; /* Giảm khoảng cách giữa "Cloudy" và "54°F" */
+}
+
+.weather-condition {
+  padding-top: 10px;
+  font-size: 25px;
+  font-weight: 600;
+}
+
+.temperature {
+  font-size: 18px;
+  font-weight: 700;
+  padding-bottom: 10px;
+}
+
+/* Bố cục tổng thể */
+.dashboard {
+  display: grid;
+  grid-template-columns: 1fr 1.5fr 1fr; /* Ensure middle panel is slightly wider */
+  gap: 20px;
+  max-width: 100vw;
+  width: 100%;
+  height: 100vh;
+  padding: 20px;
+  box-sizing: border-box;
+  align-items: start; /* Ensure vertical alignment */
+}
+
+.left-panel,
+.middle-panel,
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+/* Cột bên trái */
+.left-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px rgba(0, 0, 0, 0.2);
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.2); /* Màu nền mặc định */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 20px; /* Khoảng cách từ ảnh đến viền */
+  display: inline-block; /* Đảm bảo chỉ bao quanh ảnh */
+}
+
+.top-section {
+  display: flex;
+  justify-content: space-between;
+  font-size: 24px;
+  font-weight: bold;
+  padding: 0 0 20px 0;
+}
+
+.media-control {
+  background: rgba(255, 255, 255, 0.1); /* Màu nền mặc định */
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.2);
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.status {
+  display: flex;
+  justify-content: space-around;
+  margin: 20px 0;
+  gap: 10px;
+}
+
+.room {
+  background: rgba(255, 254, 254, 0.1); /* Màu nền mặc định */
+  padding: 15px;
+  border-radius: 10px;
+  text-align: center;
+  width: 30%;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.activities {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 15px;
+  border-radius: 20px;
+  color: rgba(0, 0, 0, 0.5);
+  background: rgba(255, 255, 255, 0.1); /* Màu nền nhẹ */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.activities ul {
+  list-style: none;
+  padding: 0;
+}
+
+.activities li {
+  margin: 10px 0;
+}
+
+/* Cột giữa */
+.middle-panel {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.controls-header {
+  display: flex;
+  justify-content: center;
+  gap: 100px;
+  margin: 20px 0;
+}
+
+.tab {
+  width: 100px;
+  height: 30px;
+  font-size: 16px;
+  padding: 10px 15px;
+  background: rgba(255, 255, 255, 0.1); /* Màu nền mặc định */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  border-radius: 50px;
+  cursor: pointer;
+}
+.tab:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.modes {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 cột */
+  gap: 20px; /* Khoảng cách giữa các nút */
+  padding: 20px;
+  justify-content: center;
+}
+
+.modes button {
+  display: flex;
+  flex-direction: column; /* Icon trên, chữ dưới */
+  align-items: center;
+  justify-content: center;
+  width: 120px;
+  height: 60px;
+  border-radius: 15px;
+  border: none;
+  font-size: 14px;
+  font-weight: bold;
+  background: rgba(255, 255, 255, 0.1); /* Nền trong suốt */
+  color: white;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+}
+
+/* Biểu tượng trong nút */
+.modes button i {
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+
+/* Hiệu ứng khi bấm */
+.modes button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.modes button:active {
+  background: rgba(255, 200, 50, 0.8);
+  box-shadow: 0 4px 15px rgba(255, 200, 50, 0.5);
+  color: black;
+}
+
+/* Icon khóa cho "In Bed" */
+.modes button.locked {
+  position: relative;
+}
+
+.modes button .lock-icon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 14px;
+  color: white;
+  opacity: 0.8;
+}
+/* Hiệu ứng hover */
+.modes button:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+/* Trạng thái active */
+.modes button.active {
+  background: rgba(255, 200, 50, 0.8);
+  box-shadow: 0 4px 15px rgba(255, 200, 50, 0.5);
+  color: black;
+}
+
+/* Nút "In Bed" bị khóa */
+.modes button.locked {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.modes button .lock-icon {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  font-size: 14px;
+  color: white;
+  opacity: 0.8;
+}
+
+/* Khi mở khóa, nút có thể bấm */
+.modes button.unlocked {
+  opacity: 1;
+  cursor: pointer;
+}
+/* Cột bên phải */
+.right-panel {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+.right-panel h3 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #fff;
+  margin-bottom: 10px;
+}
+.security {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  padding: 20px;
+}
+
+.lock {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  width: 120px; /* Đặt kích thước cố định */
+  height: 50px;
+  border-radius: 25px;
+  background: rgba(255, 255, 255, 0.1);
+  color: white;
+  font-size: 12px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: background 0.4s ease-in-out, box-shadow 0.4s ease-in-out,
+    color 0.4s ease-in-out, transform 0.2s ease;
+  cursor: pointer;
+  text-align: center;
+  position: relative;
+  white-space: nowrap;
+  padding: 0 15px;
+}
+
+/* Icon khóa */
+.lock i {
+  font-size: 14px;
+  transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
+  margin-left: 10px;
+}
+
+/* Khi cửa mở */
+.lock.unlocked {
+  background: rgba(255, 0, 0, 0.9);
+  box-shadow: 0 4px 15px rgba(255, 0, 0, 0.5);
+  color: white;
+  transform: scale(1.05); /* Tạo hiệu ứng phóng to nhẹ */
+}
+
+/* Làm hiệu ứng icon thay đổi mượt hơn */
+.lock.unlocked i {
+  transform: rotate(0deg);
+  opacity: 1;
+}
+
+/* Đảm bảo icon giữ vị trí, tránh dịch chuyển */
+.lock span {
+  display: inline-block;
+  min-width: 120px; /* Đặt chiều rộng cố định để tránh chữ bị co giãn */
+  text-align: center;
+}
+
+/* Hover thêm hiệu ứng mượt */
+.lock:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.4);
+}
+
+/* Container chính của camera */
+.camera-container {
+  width: 100%;
+  max-width: 450px; /* Giữ kích thước hợp lý */
+  background: rgba(255, 255, 255, 0.1); /* Nền mờ */
+  backdrop-filter: blur(10px); /* Hiệu ứng mờ */
+  border-radius: 15px; /* Bo góc */
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  margin: 20px auto;
+}
+
+/* Tiêu đề & trạng thái camera */
+.camera-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 15px;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.4);
+  color: white;
+}
+
+/* Tiêu đề camera */
+.camera-title {
+  font-size: 1rem;
+}
+
+/* Trạng thái camera */
+.camera-status {
+  font-size: 0.9rem;
+  color: #bbb;
+}
+
+/* Phần hiển thị hình ảnh camera */
+.camera-stream {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: black;
+}
+
+.camera-stream img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* Thanh điều khiển dưới camera */
+.camera-footer {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px;
+  background: rgba(0, 0, 0, 0.4);
+}
+
+.camera-footer i {
+  color: white;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.camera-footer i:hover {
+  color: #ffcc00;
+}
+
+
+.icon-container {
+  display: flex;
+  gap: 40px;
+}
+
+.icon-wrapper {
+  width: 80px; /* Tăng kích thước tổng thể */
+  height: 80px; /* Tăng kích thước tổng thể */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1); /* Màu nền mặc định */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+.icon-wrapper:hover {
+  background: rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.3);
+}
+
+.icon-wrapper i {
+  font-size: 30px; /* Tăng kích thước icon */
+  color: white;
+}
+
+/* Màu khi được chọn */
+.icon-wrapper.active {
+  background: rgba(255, 200, 50, 0.8); /* Màu vàng nổi bật */
+  box-shadow: 0 4px 15px rgba(255, 200, 50, 0.5);
+}
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.controls {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 15px;
+  padding: 20px;
+}
+
+.device {
+  display: flex;
+  flex-direction: column; /* Đưa icon lên trên chữ */
+  align-items: center;
+  justify-content: center;
+  width: 110px; /* Tăng kích thước nút */
+  height: 110px; /* Tăng chiều cao */
+  font-size: 12px; /* Làm chữ lớn hơn */
+  border-radius: 25px; /* Bo góc nhiều hơn */
+  transition: 0.3s ease-in-out;
+  border-radius: 20px;
+  border: none;
+  font-weight: bold;
+  color: white;
+  background: rgba(255, 255, 255, 0.1); /* Màu nền mặc định */
+  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+  text-align: center;
+}
+
+.device i {
+  font-size: 30px; /* Làm icon lớn hơn */
+  margin-bottom: 10px; /* Tạo khoảng cách giữa icon và chữ */
+}
+
+.device span {
+  display: block; /* Giúp chữ căn giữa */
+  font-size: 16px;
+}
+
+.device:hover i {
+  transform: scale(1.2);
+  transition: transform 0.3s ease-in-out;
+}
+/* Hiệu ứng khi bấm chọn */
+.device.active {
+  background: rgba(255, 200, 50, 0.8); /* Màu sáng vàng */
+  box-shadow: 0 4px 15px rgba(255, 200, 50, 0.5);
+  color: black;
+}

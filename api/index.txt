@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Smart Home Dashboard</title>
+    <link rel="stylesheet" href="css/styles.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+      integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <style>
+      @import url("https://fonts.googleapis.com/css2?family=Black+Ops+One&family=Bruno+Ace&family=Foldit:wght@100;200&family=Monoton&family=Press+Start+2P&display=swap");
+    </style>
+  </head>
+  <body>
+    <!-- Giao diện chính -->
+    <div class="dashboard">
+      <!-- Cột bên trái -->
+      <div class="left-panel">
+        <div class="top-section">
+          <div class="time boxpanel" id="time-box">Đang tải...</div>
+          <div class="weather-box boxpanel">
+            <span class="weather-condition">Hà Nội</span>
+            <br />
+            <span class="temperature" id="temperature">--°C</span>
+          </div>
+        </div>
+
+        <div class="media-control">
+          <p>
+            Boudoir TV <br />
+            <i class="fa-solid fa-headphones"></i>
+            <span>Netflix</span>
+          </p>
+        </div>
+
+        <div class="status">
+          <div class="room" data-room="Office">
+            Office <br />
+            💧 <span class="humidity">--</span><br />
+            <!-- Độ ẩm xuống dòng riêng -->
+            🌡 <span class="temperature">--</span>
+          </div>
+
+          <div class="room" data-room="Kitchen">
+            Kitchen <br />
+            💧 <span class="humidity">--</span>% <br />
+            <!-- Độ ẩm xuống dòng riêng -->
+            🌡 <span class="temperature">--</span>°F
+          </div>
+
+          <div class="room" data-room="Tank">
+            Tank <br />
+            💧 <span class="humidity">--</span>% <br />
+            <!-- Độ ẩm xuống dòng riêng -->
+            🌡 <span class="temperature">--</span>°F
+          </div>
+        </div>
+
+        <div class="activities">
+          <ul>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Cột giữa -->
+      <div class="middle-panel">
+        <div class="icon-container">
+          <div class="icon-wrapper" onclick="toggleColor(this)">
+            <i class="fa-solid fa-couch"></i>
+          </div>
+          <div class="icon-wrapper" onclick="toggleColor(this)">
+            <i class="fa-solid fa-bed"></i>
+          </div>
+          <div class="icon-wrapper" onclick="toggleColor(this)">
+            <i class="fa-solid fa-tv"></i>
+          </div>
+          <div class="icon-wrapper" onclick="toggleColor(this)">
+            <i class="fa-solid fa-stairs"></i>
+          </div>
+        </div>
+        <div class="controls-header">
+          <button class="tab">Controls</button>
+          <button class="tab">Sensors</button>
+        </div>
+        <div class="controls">
+          <!-- Nút bật/tắt Desk Lamp -->
+          <button id="toggle-livingroom" class="device" data-device="livingroom" data-name="Đèn Phòng Khách">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>Living Room</span>
+          </button>
+
+          <!-- Nút bật/tắt Desk Lamp -->
+          <button id="toggle-desklamp" class="device" data-device="desklamp" data-name="Đèn Bàn">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>Desk Lamp</span>
+          </button>
+
+          <!-- Nút bật/tắt Ceiling Light -->
+          <button id="toggle-fan" class="device" data-device="fan" data-name="Quạt">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>Fan</span>
+          </button>
+          <button id="toggle-kitchen" class="device" data-device="kitchen" data-name="Đèn bếp">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>Kitchen</span>
+          </button>
+          <button id="toggle-bedroom" class="device" data-device="bedroom" data-name="Đèn ngủ">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>Bedroom</span>
+          </button>
+          <button id="toggle-garage" class="device" data-device="garage" data-name="garage">
+            <i class="fa-regular fa-lightbulb"></i>
+            <span>garage</span>
+          </button>
+        </div>
+
+        <div class="modes">
+          <button>
+            <i class="fa-solid fa-sunrise"></i> <span>Morning</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-sunset"></i> <span>Evening</span>
+          </button>
+          <button class="locked">
+            <i class="fa-solid fa-bed"></i> <span>In Bed</span>
+            <i class="fa-solid fa-lock lock-icon"></i>
+          </button>eilin
+          <button>
+            <i class="fa-solid fa-sparkles"></i> <span>Vapor Wave</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-meteor"></i> <span>Nebula</span>
+          </button>
+          <button>
+            <i class="fa-solid fa-film"></i> <span>Movie Mode</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Cột bên phải -->
+      <div class="right-panel">
+        <div class="security">
+          <div class="lock locked" onclick="toggleLock(this)">
+            <i class="fa-solid fa-lock"></i>
+            <span>Front Door Locked</span>
+          </div>
+          <div class="lock locked" onclick="toggleLock(this)">
+            <i class="fa-solid fa-lock"></i>
+            <span>Back Door Locked</span>
+          </div>
+        </div>
+        <div class="camera-container">
+          <!-- Thanh trạng thái camera -->
+          <div class="camera-header">
+            <span class="camera-title">Porch Cam</span>
+            <span class="camera-status">Idle</span>
+          </div>
+
+          <!-- Camera Live Stream -->
+          <div class="camera-stream">
+            <img
+              id="esp32cam-stream"
+              src="http://192.168.137.200/stream"
+              alt="ESP32-CAM Video"
+              onerror="this.onerror=null; this.src='error-image.png';"
+            />
+          </div>
+
+          <!-- Thanh điều khiển bên dưới -->
+          <div class="camera-footer">
+            <i class="fa-solid fa-walking"></i>
+            <!-- Icon đi bộ -->
+            <i class="fa-solid fa-cog"></i>
+            <!-- Icon cài đặt -->
+            <i class="fa-solid fa-trash"></i>
+            <!-- Icon xóa -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script src="js/index.js?v=123"></script>
+</html>

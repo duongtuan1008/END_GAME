@@ -1,0 +1,78 @@
+<?php
+header('Content-Type: application/json');
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
+$servername = "localhost";
+$username = "root";
+$password = "100803";
+
+// ✅ Kết nối đến home_monitoring
+$conn1 = new mysqli($servername, $username, $password, "home_monitoring");
+if ($conn1->connect_error) {
+    echo json_encode(["error" => "❌ Lỗi MySQL (home_monitoring): " . $conn1->connect_error]);
+    exit;
+}
+
+// ✅ Kết nối đến esp_data
+$conn2 = new mysqli($servername, $username, $password, "esp_data");
+if ($conn2->connect_error) {
+    echo json_encode(["error" => "❌ Lỗi MySQL (esp_data): " . $conn2->connect_error]);
+    exit;
+}
+
+// ✅ Lấy logs từ home_monitoring
+$sql1 = "SELECT device_name, activity, status, timestamp FROM activity_log ORDER BY timestamp DESC LIMIT 10";
+$result1 = $conn1->query($sql1);
+
+if (!$result1) {
+    echo json_encode(["error" => "❌ Lỗi khi lấy logs: " . $conn1->error]);
+    exit;
+}
+
+$logs = $result1->fetch_all(MYSQLI_ASSOC);
+
+// ✅ Lấy sensor data từ esp_data
+$sql2 = "SELECT location, value1 AS temperature, value2 AS humidity, reading_time 
+         FROM SensorData 
+         WHERE location IS NOT NULL AND location != '' 
+         AND id IN (SELECT MAX(id) FROM SensorData GROUP BY location)";
+
+$result2 = $conn2->query($sql2);
+
+if (!$result2) {
+    echo json_encode(["error" => "❌ Lỗi khi lấy sensor data: " . $conn2->error]);
+    exit;
+}
+
+$sensors = [];
+while ($row = $result2->fetch_assoc()) {
+    // ✅ Ghi log để debug dữ liệu cảm biến trước khi lọc
+    error_log("Sensor Data: " . json_encode($row));
+
+    // ✅ Bỏ qua dữ liệu nếu giá trị null hoặc bằng 0
+    if (!empty($row['location']) && $row['temperature'] !== null && $row['humidity'] !== null) {
+        $sensors[] = $row;
+    }
+}
+
+// ✅ Đóng kết nối MySQL
+$conn1->close();
+$conn2->close();
+
+// ✅ Chuẩn bị phản hồi JSON
+$response = [
+    "logs" => $logs ?: [],  // Nếu logs null thì trả về mảng rỗng
+    "sensors" => $sensors ?: []  // Nếu sensors null thì trả về mảng rỗng
+];
+
+$json_output = json_encode($response, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE);
+
+// ✅ Kiểm tra lỗi JSON trước khi gửi
+if (json_last_error() !== JSON_ERROR_NONE) {
+    echo json_encode(["error" => "❌ Lỗi mã hóa JSON: " . json_last_error_msg()]);
+    exit;
+}
+
+echo $json_output;
+?>
