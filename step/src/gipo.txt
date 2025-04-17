@@ -5,7 +5,7 @@ SDA → GPIO 21
 SCL → GPIO 22
 2️⃣ Module RFID RC522
 Giao tiếp: SPI
-Chân kết nối với ESP32
+Chân kết nối với ESP32Q
 SDA/SS → GPIO 5
 SCK → GPIO 18
 MOSI → GPIO 23

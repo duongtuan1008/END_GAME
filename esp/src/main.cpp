@@ -22,7 +22,7 @@ BH1750 lightMeter;
 
 // 🛠 Cấu hình thiết bị điều khiển
 #define BUZZER_PIN 15
-#define FAN_PIN 19
+#define FAN_PIN 27
 
 // 🔹 Biến lưu dữ liệu
 float temperature = 0.0, humidity = 0.0, lightLevel = 0.0;
